@@ -10,7 +10,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SaveFileContactsMenuItem extends MenuItem {
     private final ContactService contactService;
-    Contact contact;
+
     @Override
     public String getName() {
         return "Save contacts to file";
