@@ -1,14 +1,20 @@
 package ua.eithillel.oop.homework3.ui.menu.items;
 
+import ua.eithillel.oop.homework3.models.Contact;
+import ua.eithillel.oop.homework3.ui.menu.ContactView;
 import ua.eithillel.oop.homework3.ui.menu.MenuItem;
 import ua.eithillel.oop.homework3.services.ContactService;
+
+import java.util.List;
 
 
 public class ShowContactsMenuItem extends MenuItem {
     ContactService contactService;
+    ContactView contactView;
 
-    public ShowContactsMenuItem(ContactService contactService) {
+    public ShowContactsMenuItem(ContactService contactService, ContactView contactView) {
         this.contactService = contactService;
+        this.contactView = contactView;
     }
 
     @Override
@@ -18,8 +24,7 @@ public class ShowContactsMenuItem extends MenuItem {
 
     @Override
     public void run() {
-        System.out.println("--------------");
-        contactService.showAllContacts();
-        System.out.println("--------------");
+        List<Contact> contacts = contactService.showAllContacts();
+        contactView.writeContacts(contacts);
     }
 }

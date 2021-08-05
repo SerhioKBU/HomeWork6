@@ -10,10 +10,6 @@ public class InMemoryContactsService implements ContactService {
 
     @Override
     public List<Contact> showAllContacts() {
-        int number = 0;
-        for (Contact item : contacts) {
-            System.out.println(++ number + "." + " " + item);
-        }
         return contacts;
     }
 
