@@ -27,7 +27,5 @@ public class AddContactMenuItem extends MenuItem {
         System.out.println("Enter contact number: ");
         String number = scanner.nextLine();
         contactService.addContact(new Contact(name, number));
-
     }
-
 }

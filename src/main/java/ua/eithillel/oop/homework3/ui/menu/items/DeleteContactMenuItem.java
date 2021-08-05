@@ -3,13 +3,13 @@ package ua.eithillel.oop.homework3.ui.menu.items;
 import ua.eithillel.oop.homework3.ui.menu.MenuItem;
 import ua.eithillel.oop.homework3.services.ContactService;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DeleteContactMenuItem extends MenuItem {
     private Scanner scanner;
 
     ContactService contactService;
-    //List<Contact> contacts;
 
     public DeleteContactMenuItem(Scanner scanner, ContactService contactService) {
         this.scanner = scanner;
@@ -23,24 +23,24 @@ public class DeleteContactMenuItem extends MenuItem {
 
     @Override
     public void run() {
-        System.out.println("Enter the contact which you wanna remove: ");
-//        if(!scanner.hasNextInt()) {
-//            System.out.println("Введённое значение не является числом");
-//            return;
-//        }
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+        do {
+            System.out.print("Enter the contact which you wanna remove: ");
+            System.out.print(" ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("Entered value isn't a number. Try again!");
+                scanner.nextLine();
+                continue;
+            } else {
+                break;
+            }
+        } while (true);
         int choice = scanner.nextInt();
         scanner.nextLine();
         contactService.removeContact(choice - 1);
         System.out.println("------------------");
     }
-
-
 }
 
-//    @Override
-//    public void run() {
-//        System.out.print("Enter New Contact (Name + Tel Number): ");
-//        String newContact = scanner.nextLine();
-//        contacts.remove();
-//    }
+
 

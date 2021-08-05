@@ -27,19 +27,5 @@ public class Main3 {
         Menu menu = new Menu(scanner, menuItemList);
         menu.makeMenu();
 
-
-
-//        ContactsBook contactsBook = new ContactsBook(scanner, contacts);
-//        Contact contact = new Contact("", "");
-//        contactsBook.addContact(contact);
-//        contactsBook.addContact(contact);
-//        contactsBook.addContact(contact);
-//        System.out.println(contactsBook.getContact(3));
-//        service.showAllContacts();
-//        System.out.println("Total contacts amount are " + contactsBook.size());
-//        contactsBook.removeContact(0);
-//        System.out.println("--------");
-//        service.showAllContacts();
-
     }
 }
