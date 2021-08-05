@@ -20,7 +20,7 @@ public class Main3 {
         List<MenuItem> menuItemList = Arrays.asList(
                 new AddContactMenuItem(scanner, contactService),
                 new ShowContactsMenuItem(contactService, contactView),
-                new DeleteContactMenuItem(scanner, contactService),
+                new DeleteContactMenuItem(contactService, contactView),
                 new FindContactMenuItem(contactService, contactView, scanner),
                 new SaveFileContactsMenuItem(contactService)
         );

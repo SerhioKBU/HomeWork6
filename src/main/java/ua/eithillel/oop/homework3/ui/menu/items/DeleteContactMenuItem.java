@@ -1,5 +1,6 @@
 package ua.eithillel.oop.homework3.ui.menu.items;
 
+import ua.eithillel.oop.homework3.ui.menu.ContactView;
 import ua.eithillel.oop.homework3.ui.menu.MenuItem;
 import ua.eithillel.oop.homework3.services.ContactService;
 
@@ -8,12 +9,12 @@ import java.util.Scanner;
 
 public class DeleteContactMenuItem extends MenuItem {
     private Scanner scanner;
-
     ContactService contactService;
+    ContactView contactView;
 
-    public DeleteContactMenuItem(Scanner scanner, ContactService contactService) {
-        this.scanner = scanner;
+    public DeleteContactMenuItem(ContactService contactService, ContactView contactView) {
         this.contactService = contactService;
+        this.contactView = contactView;
     }
 
     @Override
@@ -23,21 +24,7 @@ public class DeleteContactMenuItem extends MenuItem {
 
     @Override
     public void run() {
-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
-        do {
-            System.out.print("Enter the contact which you wanna remove: ");
-            System.out.print(" ");
-            if (!scanner.hasNextInt()) {
-                System.out.println("Entered value isn't a number. Try again!");
-                scanner.nextLine();
-                continue;
-            } else {
-                break;
-            }
-        } while (true);
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        contactService.removeContact(choice - 1);
+        contactService.removeContact(contactView.deleteContact());
         System.out.println("------------------");
     }
 }
