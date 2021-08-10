@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import ua.eithillel.oop.homework3.models.Contact;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -76,7 +78,7 @@ public class ListUtils {
         return result;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         List<Integer> array = Arrays.asList(5,4,9,16);
         List<Contact> namesList = new ArrayList<>();
         namesList.add(new Contact("Serhii", "+7099 7891266"));
@@ -109,11 +111,16 @@ public class ListUtils {
         forEach(changedContacts, (System.out::println));
         System.out.println("--------------------------------------------------");
 
+        FileWriter writer = new FileWriter("name_list.txt");
+        for (Contact element: namesList) {
+            String name = element.getName();
+            String number = element.getPhoneNumber();
+            writer.write(name + " " + number + System.getProperty("line.separator"));
+        }
+        writer.close();
 
         List<Integer> values = Stream.of("32", "43", "74", "54", "3").map(Integer::valueOf).collect(Collectors.toList());
         System.out.println("New list: " + values);
         System.out.println("--------------------------------------------------");
-
-
     }
 }
