@@ -7,7 +7,6 @@ import ua.eithillel.oop.homework3.services.ContactService;
 
 import java.util.List;
 
-
 public class ShowContactsMenuItem extends MenuItem {
     ContactService contactService;
     ContactView contactView;

@@ -1,14 +1,17 @@
 package ua.eithillel.oop.homework3;
 
+import ua.eithillel.oop.homework3.models.Contact;
 import ua.eithillel.oop.homework3.services.ContactService;
 import ua.eithillel.oop.homework3.services.InMemoryContactsService;
 import ua.eithillel.oop.homework3.ui.menu.ContactView;
 import ua.eithillel.oop.homework3.ui.menu.items.*;
 import ua.eithillel.oop.homework3.ui.menu.Menu;
 import ua.eithillel.oop.homework3.ui.menu.MenuItem;
+import ua.eithillel.oop.homework3.utils.ListUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main3 {
@@ -22,10 +25,11 @@ public class Main3 {
                 new ShowContactsMenuItem(contactService, contactView),
                 new DeleteContactMenuItem(contactService, contactView),
                 new FindContactMenuItem(contactService, contactView, scanner),
-                new SaveFileContactsMenuItem(contactService)
+                new SaveFileContactsMenuItem(contactService, contactView)
         );
         Menu menu = new Menu(scanner, menuItemList);
         menu.makeMenu();
+
 
     }
 }

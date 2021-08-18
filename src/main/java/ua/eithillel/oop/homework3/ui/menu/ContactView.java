@@ -3,6 +3,8 @@ package ua.eithillel.oop.homework3.ui.menu;
 import lombok.RequiredArgsConstructor;
 import ua.eithillel.oop.homework3.models.Contact;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -47,5 +49,13 @@ public class ContactView {
         int choice = scanner.nextInt();
         scanner.nextLine();
         return choice - 1;
+    }
+
+    public void createFile(List<Contact> contacts) throws IOException {
+        FileWriter writer = new FileWriter("name_number_list.txt");
+        for (Contact element: contacts) {
+            writer.write(element + System.getProperty("line.separator"));
+        }
+        writer.close();
     }
 }
