@@ -1,6 +1,6 @@
 package ua.eithillel.oop.homework5;
 
-public interface LinkList<T> {
+public interface LinkList <T> {
     boolean add(T element);
     boolean remove(T element);
     T getFirstElement();

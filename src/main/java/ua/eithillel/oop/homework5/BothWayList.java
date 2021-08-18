@@ -1,6 +1,7 @@
 package ua.eithillel.oop.homework5;
 
 import lombok.Data;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -116,14 +117,13 @@ public class BothWayList<T> implements LinkList<T>, Iterable<T> {
     }
 
     @Data
-        private static class ListElement<T> {
-            T value;
-            ListElement<T> next;
-            ListElement<T> prev;
+    private static class ListElement<T> {
+        T value;
+        ListElement<T> next;
+        ListElement<T> prev;
 
         public ListElement(T value) {
             this.value = value;
         }
     }
 }
-
