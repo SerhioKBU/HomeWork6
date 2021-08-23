@@ -2,12 +2,12 @@ package ua.eithillel.oop.homework6;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import ua.eithillel.oop.lesson10.MySet;
 
 import java.util.Iterator;
 import java.util.Objects;
 
-
-public class MyMap<K, V> implements MapForm<K, V>, Iterable<V>{
+public class MyMap<K, V> implements MapForm<K, V>, Iterable<MyMap.Entry>{
     private static final int ARRAY_LENGTH = 16;
     Entry<K,V> [] buckets = new Entry[ARRAY_LENGTH];
     private int size = 0;
@@ -22,40 +22,45 @@ public class MyMap<K, V> implements MapForm<K, V>, Iterable<V>{
     }
 
     @Override
-    public Iterator<V> iterator() {
-        return new Iterator<V>() {
-            int index;
-            Entry<K,V> current;
-
-            {
-                index = getNextHeadIndex(-1);
-                if (index!= -1) current = buckets[index];
-            }
-
-            private int getNextHeadIndex(int currentHead){
-                for (int i = currentHead + 1; i < buckets.length; i++) {
-                    if (buckets[i]!=null) return i;
-                }
-                return -1;
-            }
-
-            @Override
-            public boolean hasNext() {
-                return current != null;
-            }
-
-            @Override
-            public V next() {
-                V value = (V) current.value;
-                current = current.next;
-                if(current==null) {
-                    index = getNextHeadIndex(index);
-                    if (index != -1) current = buckets[index];
-                }
-                return value;
-            }
-        };
+    public Iterator<Entry> iterator() {
+        return null;
     }
+
+//    public Iterator<V> iterator() {
+//        return new Iterator<V>() {
+//            int index;
+//            Entry current;
+//
+//            {
+//                index = getNextHeadIndex(-1);
+//                if (index!= -1) current = buckets[index];
+//            }
+//
+//            private int getNextHeadIndex(int currentHead){
+//                for (int i = currentHead + 1; i < buckets.length; i++) {
+//                    if (buckets[i]!=null) return i;
+//                }
+//                return -1;
+//            }
+//
+//            @Override
+//            public boolean hasNext() {
+//                return current != null;
+//            }
+//
+//            @Override
+//            public V next() {
+//                V value = (V) current.value;
+//                current = current.next;
+//                if(current==null) {
+//                    index = getNextHeadIndex(index);
+//                    if (index != -1) current = buckets[index];
+//                }
+//                return value;
+//            }
+//        };
+//    }
+
 
     @Data
     @AllArgsConstructor
@@ -126,6 +131,14 @@ public class MyMap<K, V> implements MapForm<K, V>, Iterable<V>{
         return null;
     }
 
+//    public MySet<K> kSet() {
+//        MySet<K> mySet = new MySet<>();
+//        for (int i = 0; i < buckets.length; i++) {
+//            mySet.add(buckets[i].key);
+//        }
+//        return mySet;
+//    }
+
     @Override
     public boolean containsKey(K key) {
         for (Entry<K, V> current = buckets[getBucket(key)];
@@ -146,9 +159,10 @@ public class MyMap<K, V> implements MapForm<K, V>, Iterable<V>{
         map.put("Roma", 7771245);
         map.put("Tom", 7881200);
 
-        for (Integer i: map) {
-            System.out.println(i);
-        }
+//        for (Entry i: map) {
+//            System.out.println(i);
+//        }
+
         System.out.println("-----------------");
         System.out.println("Get bucket: "
                             + map.getBucket("Ivan") + " | "
@@ -161,6 +175,7 @@ public class MyMap<K, V> implements MapForm<K, V>, Iterable<V>{
                                                + map.containsKey("Arten"));
         System.out.println("-----------------");
         System.out.println("Size: " + map.size + " Is empty? " + map.isEmpty());
+        System.out.println("-----------------");
 
     }
 }
